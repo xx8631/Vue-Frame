@@ -21,7 +21,10 @@ class Store {
     })
     //保存mutations
     this._mutations = options.mutations;
+
     this._actions = options.actions;
+
+
 
     //锁死commit，dispatch 函数this指向；
     const store = this;
@@ -32,6 +35,17 @@ class Store {
     this.dispatch = function boundDispatch(type, payload) {
       dispatch.call(store, type, payload);
     }
+    //实现getters
+    this.getters = {};
+    //遍历getters
+    Object.keys(options.getters).forEach(key => {
+      //把所有的getters都变成响应式的
+      //Object.defineProperty 在一个对象上定义一个新属性，或者修改现有属性，并返回此对象
+      Object.defineProperty(this.getters, key, {
+        get: () => options.getters[key](options.state),
+        enumerable: true
+      })
+    })
   }
   //存取器使之成为只读
   get state() {
@@ -54,7 +68,6 @@ class Store {
 
   //dispatch,执行异步任务或复杂逻辑
   dispatch(type, payload) {
-    debugger;
     //1.获取action
     const entry = this._actions[type]
 
