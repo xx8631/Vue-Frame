@@ -1,7 +1,9 @@
 import Vue from 'vue'
-import VueRouter from 'vue-router'
+//import VueRouter from 'vue-router'
+import VueRouter from '../plugins/yjrouter/yjvue-router'
 import Home from '../views/Home.vue'
 
+//使用插件
 Vue.use(VueRouter)
 
 const routes = [

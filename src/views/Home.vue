@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png">
-    <router-link :to="'Login'">登录</router-link>
+    <router-link :to="'/Login'">登录</router-link>
   </div>
 </template>
 
