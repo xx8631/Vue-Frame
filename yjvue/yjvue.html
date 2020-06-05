@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <p @click="add">{{counter}}</p>
+    <p yj-text="counter"></p>
+    <p yj-html="desc"></p>
+    <input type="text" yj-model="desc">
+  </div>
+
+  <script src="yjvue.js"></script>
+
+  <script>
+    const app = new YjVue({
+      el:'#app',
+      data: {
+        counter: 1,
+        desc: '<span style="color:red">芝麻开门：天王盖地虎</span>'
+      },
+      methods: {
+        add() {
+          this.counter++
+        }
+      },
+    })
+    // setInterval(() => {
+    //   app.counter++
+    // }, 1000);
+    
+  </script>
+</body>
+</html>
